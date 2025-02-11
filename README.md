@@ -1,1 +1,0 @@
-# web3-vite-kickstart
