@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.29;
 
 contract MappingsStruct {
 
@@ -32,12 +32,11 @@ contract MappingsStruct {
         balanceReceived[msg.sender].numDeposits++;
     }
 
-    function withdrawMoney(address payable _to, uint _amount) public {
-        balanceReceived[msg.sender].totalBalance -= _amount; //reduce the balance by the amount ot withdraw
-
+    function withdrawMoney(address payable _to, uint _amount) public payable {
+        balanceReceived[msg.sender].totalBalance -= _amount; //reduce the balance by the amount
         //record a new withdrawal
         Transaction memory withdrawal = Transaction(msg.value, block.timestamp);
-        balanceReceived[msg.sender].withdrawals[balanceReceived[msg.sender].numWithdrawals] = withdrawals;
+        balanceReceived[msg.sender].withdrawals[balanceReceived[msg.sender].numWithdrawals] = withdrawal;
         balanceReceived[msg.sender].numWithdrawals++;
 
         //send the amount out.
