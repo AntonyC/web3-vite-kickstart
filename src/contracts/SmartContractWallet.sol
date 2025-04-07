@@ -4,11 +4,15 @@ pragma solidity ^0.8.29;
 
 contract SmartContractWallet {
 
+    // The wallet has one owner
     address payable public owner;
 
+    // It is possible for the owner to spend funds on any kind of address
+    // It should be possible to allow certain people to spend up to a certain amount of funds
     mapping(address => uint) public allowance;
     mapping(address => bool) public isAllowedToSend;
 
+    // It should be possible to set the owner to a different address
     mapping(address => bool) public guardian;
     address payable nextOwner;
     uint guardiansResetCount;
