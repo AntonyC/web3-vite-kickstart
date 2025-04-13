@@ -4,7 +4,7 @@ pragma solidity 0.8.29;
 interface IERC20 {
     function transfer(address to, uint amount) external;
     function decimals() external view returns(uint);
-    function getInputValuee(string memory value) external view returns(string memory);
+    function getInputValue(string memory value) external view returns(string memory);
 }
 
 contract TokenSale {
@@ -26,6 +26,6 @@ contract TokenSale {
     }
 
     function getInputValue(string memory value) public view returns(string memory)  {
-        return token.getInputValuee(value);
+        return token.getInputValue(value);
     }
 }
